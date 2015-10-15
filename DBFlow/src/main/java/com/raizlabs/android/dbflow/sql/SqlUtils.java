@@ -48,7 +48,7 @@ public class SqlUtils {
     public static <ModelClass extends Model> List<ModelClass> queryList(Class<ModelClass> modelClass, String sql,
                                                                         String... args) {
         BaseDatabaseDefinition flowManager = FlowManager.getDatabaseForTable(modelClass);
-        Database database = flowManager.getWritableDatabase()
+        Database database = flowManager.getWritableDatabase();
         Cursor cursor = database.rawQuery(sql, args);
         List<ModelClass> list = null;
         try {
