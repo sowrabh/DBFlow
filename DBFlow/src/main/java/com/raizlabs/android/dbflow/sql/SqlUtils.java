@@ -48,8 +48,7 @@ public class SqlUtils {
     public static <ModelClass extends Model> List<ModelClass> queryList(Class<ModelClass> modelClass, String sql,
                                                                         String... args) {
         BaseDatabaseDefinition flowManager = FlowManager.getDatabaseForTable(modelClass);
-        SQLiteDatabase database = flowManager.getWritableDatabase();
-        Cursor cursor = database.rawQuery(sql, args);
+        Cursor cursor = flowManager.getWritableDatabase().rawQuery(sql, args);
         List<ModelClass> list = null;
         try {
             if (BaseCacheableModel.class.isAssignableFrom(modelClass)) {
@@ -58,7 +57,6 @@ public class SqlUtils {
                 list = convertToList(modelClass, cursor);
             }
         } finally {
-            database.close();
             cursor.close();
         }
         return list;
