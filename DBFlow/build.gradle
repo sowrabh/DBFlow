@@ -35,5 +35,4 @@ dependencies {
     androidTestApt project("${dbflow_project_prefix}DBFlow-Compiler")
 }
 
-apply from: 'https://raw.githubusercontent.com/Raizlabs/maven-releases/master/bintray_upload.gradle'
 apply from: '../android-artifacts.gradle'
